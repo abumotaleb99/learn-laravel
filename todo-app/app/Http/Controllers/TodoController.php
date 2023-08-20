@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class TodoController extends Controller
 {
     public function index() {
-        $todo = Todo::all();
+        $allTodo = Todo::all();
 
-        return view("home", ["todo" => $todo]);
+        return view("home", ["allTodo" => $allTodo]);
     }
 
     public function saveTodo(Request $request) {
@@ -22,4 +22,22 @@ class TodoController extends Controller
 
         return redirect('/');
     }
+
+    public function editTodo($id) {
+        $allTodo = Todo::all();
+        $todo = Todo::find($id);
+    
+        return view("edit-todo", ["allTodo" => $allTodo, "todo" => $todo]);
+    }
+
+    public function updateTodo(Request $request) {
+        $todo = Todo::find($request->todo_id);
+        $todo->task = $request->task;
+        $todo->status = $request->status;
+        $todo->save();
+
+        return redirect('/');
+    }
+    
+
 }

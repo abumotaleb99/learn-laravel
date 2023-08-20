@@ -26,16 +26,16 @@
                 </thead>
                 <tbody>
                     @php($i = 1)
-                    @foreach($todo as $singleTodo)
+                    @foreach($allTodo as $todo)
                     <tr>
                         <td>{{ $i++ }}</td>
-                        <td>{{ $singleTodo->task }}</td>
-                        @if($singleTodo->status === 0)
+                        <td>{{ $todo->task }}</td>
+                        @if($todo->status === 0)
                         <td>Not Completed</td>
                         @else
                         <td>Completed</td>
                         @endif    
-                        <td><a href="{{ url('todo/edit', ['id' => $singleTodo->id]) }}">Edit</a> | <a href="{{ url('todo/delete', ['id' => $singleTodo->id]) }}">Delete</a></td>
+                        <td><a href="{{ url('todo/edit', ['id' => $todo->id]) }}">Edit</a> | <a href="{{ url('todo/delete', ['id' => $todo->id]) }}">Delete</a></td>
                     </tr>
                     @endforeach
                 </tbody>
