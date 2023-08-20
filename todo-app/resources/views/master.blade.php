@@ -25,12 +25,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php($i = 1)
+                    @foreach($todo as $singleTodo)
                     <tr>
-                        <td>1</td>
-                        <td>Task 1</td>
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $singleTodo->task }}</td>
+                        @if($singleTodo->status === 0)
                         <td>Not Completed</td>
-                        <td><a href="">Edit</a> | <a href="">Delete</a></td>
+                        @else
+                        <td>Completed</td>
+                        @endif    
+                        <td><a href="{{ url('todo/edit', ['id' => $singleTodo->id]) }}">Edit</a> | <a href="{{ url('todo/delete', ['id' => $singleTodo->id]) }}">Delete</a></td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

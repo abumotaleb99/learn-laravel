@@ -17,3 +17,4 @@ use App\Http\Controllers\TodoController;
 Route::get('/', [TodoController::class, 'index'])->name('home');
 Route::post('/todo/add', [TodoController::class, 'saveTodo'])->name('add-todo');
 
+
