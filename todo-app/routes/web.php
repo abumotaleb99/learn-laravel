@@ -18,6 +18,8 @@ Route::get('/', [TodoController::class, 'index'])->name('home');
 Route::post('/todo/add', [TodoController::class, 'saveTodo'])->name('add-todo');
 Route::get('/todo/edit/{id}', [TodoController::class, 'editTodo'])->name('edit-todo');
 Route::post('/todo/update', [TodoController::class, 'updateTodo'])->name('update-todo');
+Route::get('/todo/delete/{id}', [TodoController::class, 'deleteTodo'])->name('delete-todo');
+
 
 
 
